@@ -22,20 +22,20 @@ function get_data(pnr_no, session, results, next, callback) {
         $ = cheerio.load(t);
         if($('.mystyle')[1] != undefined){
             var a = $('.mystyle')[1]['children'][1];
-        }else{
-            callback(session, results, next, []);
-        }
-        //console.log((a['children']).length);
-        if(a != undefined){
-            var l = a['children'].length;
-            var ret = {};
-            ret['Current_Status'] = []
-            for (var i=2; i<=l-4; i+=2) {
-                t = a['children'][i]['children'][5]['children'][0]['data'];
-                //console.log(t.substring(1,));         
-                ret['Current_Status'].push(t.substring(1,));            
+            //console.log((a['children']).length);
+            if(a != undefined){
+                var l = a['children'].length;
+                var ret = {};
+                ret['Current_Status'] = []
+                for (var i=2; i<=l-4; i+=2) {
+                    t = a['children'][i]['children'][5]['children'][0]['data'];
+                    //console.log(t.substring(1,));         
+                    ret['Current_Status'].push(t.substring(1,));            
+                }
+                callback(session, results, next, ret['Current_Status']);
+            }else{
+                callback(session, results, next, []);
             }
-            callback(session, results, next, ret['Current_Status']);
         }else{
             callback(session, results, next, []);
         }

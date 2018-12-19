@@ -177,9 +177,9 @@ bot.dialog('/uber_source', [
 bot.dialog('/uber_source_confirm', [
     function (session,args) {
       session.userData.final = JSON.parse(JSON.stringify(args));
-      builder.Prompts.choice(session, "Is " + args.name + " your final destination ?" , "yes|no");
+      builder.Prompts.text(session, "Is " + args.name + " your final destination ?" , "yes|no");
     },function (session, results, next){
-      if (results.response == "yes"){
+      if (results.response == "yes" || results.response == "Yes" || results.response == "YES" || results.response == "yeah" || results.response == "YEAH"){
         src_lat = session.userData.final['lat'];
         src_long = session.userData.final['long'];        
         session.beginDialog('/uber_dest');
@@ -225,7 +225,7 @@ bot.dialog('/uber_dest_confirm', [
       builder.Prompts.text(session, "Is " + args['name'] + " your final destination ? (yes/no)");
       session.userData.final = args;  
     },function (session, results, next){
-      if (results.response == "yes"){
+      if (results.response == "yes" || results.response == "Yes" || results.response == "YES" || results.response == "yeah" || results.response == "YEAH"){
         dest_lat = session.userData.final['lat'];
         dest_long = session.userData.final['long'];        
         session.beginDialog('/uber_ride_list');
@@ -308,7 +308,7 @@ bot.dialog('/uber_fare_confirm', [
       });
     },function(session, results, next){
         console.log(results.response);
-        if(results.response == "yes"){
+        if(results.response == "yes" || results.response == "Yes" || results.response == "YES" || results.response == "yeah" || results.response == "YEAH"){
             uber_api.booking(session.userData.booking, session, results, next, function(session, results, next, final){
                 if (final){
                 	session.userData.booking = final;
@@ -322,7 +322,7 @@ bot.dialog('/uber_fare_confirm', [
             next();
         }
     }, function(session, results, next){
-        if (results.response == "yes"){
+        if (results.response == "yes" || results.response == "Yes" || results.response == "YES" || results.response == "yeah" || results.response == "YEAH"){
             session.userData.booking = undefined;
             session.userData.ride = undefined;
             session.beginDialog('/uber_ride_list');
@@ -390,8 +390,8 @@ bot.dialog('/pnr', [
     },function (session, results, next){
       train.pnr_status(results.response, session, results, next, function(session, results, next, final){
       	if(final.length == 0){
-      		session.send("Wrong Pnr Number or status unavailable. Please try again.");
-      		session.beginDialog('/pnr');
+      		session.endConversation("Wrong Pnr Number or status unavailable. Please try again.");
+      		// session.replaceDialog('/pnr');
       	}else{
       		for(var i = 0; i<final.length; i++){
       			session.send("Status " + i + ":" + final[i]);

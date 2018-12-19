@@ -1,13 +1,13 @@
 {
   "name": "chatbot",
   "version": "1.0.0",
-  "description": "Campus Bot for college information",
-  "main": "index.js",
+  "description": "Transport Bot for travel ease. Main purpose is to integrate with feature phones and make cab services available to them.",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Aman Agrawal",
-  "license": "ISC",
+  "license": "MIT",
+  "start": "node app.js",
   "dependencies": {
     "ajax-request": "^1.2.3",
     "body-parser": "^1.18.3",
