@@ -9,10 +9,11 @@
   "license": "MIT",
   "start": "node app.js",
   "dependencies": {
-     "body-parser": "^1.18.3",
+    "body-parser": "^1.18.3",
     "botbuilder": "^3.13.1",
     "botbuilder-azure": "^4.2.0",
     "botbuilder-cognitiveservices": "^1.2.0",
-    "cheerio": "^1.0.0-rc.2"
+    "cheerio": "^1.0.0-rc.2",
+    "restify": "^7.3.0"
   }
 }
