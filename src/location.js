@@ -11,6 +11,7 @@ function cleanLocationJSON(locationJSON) {
             name: locationDetails.formatted_address,
             lat: locationDetails.geometry.location.lat,
             long: locationDetails.geometry.location.lng,
+            img_url: "https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/" + locationDetails.geometry.location.lat + "," + locationDetails.geometry.location.lng + "/16?mapSize=500,500&pp=" + locationDetails.geometry.location.lat + "," + locationDetails.geometry.location.lng + ";113;&key=AvmJY7j8bVtVDQGwhXtgj1yMd1KDBgtpGmJMYrtaeQ5WF-Cb0AfP_fUrS6FmIm7x"
         })
     }
     return cleanedLocs;

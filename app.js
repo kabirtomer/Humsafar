@@ -44,7 +44,6 @@ bot.dialog('/', [
         ride_list = undefined;
         session.userData.final = undefined;
         session.userData.ride = undefined;
-        console.log(session.userData);
         if(!session.userData.name){
             session.beginDialog('/profile');
         }
@@ -176,8 +175,16 @@ bot.dialog('/uber_source', [
 
 bot.dialog('/uber_source_confirm', [
     function (session,args) {
+      var introCard1 = new builder.HeroCard(session)
+	  .text(args['name'])
+	  .images([
+	      builder.CardImage.create(session, args['img_url'])
+	  ]);
+	  var msg = new builder.Message(session).attachments([introCard1]);
+	  session.send(msg);
+
       session.userData.final = JSON.parse(JSON.stringify(args));
-      builder.Prompts.text(session, "Is " + args.name + " your final destination ?" , "yes|no");
+      builder.Prompts.text(session, "Is " + args.name + " your final destination ? (yes/no)");
     },function (session, results, next){
       if (results.response == "yes" || results.response == "Yes" || results.response == "YES" || results.response == "yeah" || results.response == "YEAH"){
         src_lat = session.userData.final['lat'];
@@ -222,7 +229,15 @@ bot.dialog('/uber_dest', [
 
 bot.dialog('/uber_dest_confirm', [
     function (session,args,next) {
-      builder.Prompts.text(session, "Is " + args['name'] + " your final destination ? (yes/no)");
+      var introCard1 = new builder.HeroCard(session)
+	  .text(args['name'])
+	  .images([
+	      builder.CardImage.create(session, args['img_url'])
+	  ]);
+	  var msg = new builder.Message(session).attachments([introCard1]);
+	  session.send(msg);
+
+      builder.Prompts.text(session, "Is this your final destination ? (yes/no)");
       session.userData.final = args;  
     },function (session, results, next){
       if (results.response == "yes" || results.response == "Yes" || results.response == "YES" || results.response == "yeah" || results.response == "YEAH"){
@@ -282,7 +297,7 @@ bot.dialog('/uber_ride_list', [
             }            
         }
     },function(session, results, next){
-        console.log(results.response);
+    //    console.log(results.response);
         session.beginDialog('/uber_fare_confirm', session.userData.ride[results.response.index]);            
     }
 ]);
@@ -290,8 +305,8 @@ bot.dialog('/uber_ride_list', [
 bot.dialog('/uber_fare_confirm', [
     function (session, args, next) {
       session.send("Let me get you the estimated fare.");
-      console.log("Estimated Fare");
-      console.log(args);
+      //console.log("Estimated Fare");
+      //console.log(args);
       uber_api.get_fare(args, src_lat, src_long, dest_lat, dest_long, session, next, function(session, next, final){
         if(final != {}){
             args.src_lat = src_lat;
@@ -307,7 +322,7 @@ bot.dialog('/uber_fare_confirm', [
         }
       });
     },function(session, results, next){
-        console.log(results.response);
+        // console.log(results.response);
         if(results.response == "yes" || results.response == "Yes" || results.response == "YES" || results.response == "yeah" || results.response == "YEAH"){
             uber_api.booking(session.userData.booking, session, results, next, function(session, results, next, final){
                 if (final){
@@ -336,11 +351,7 @@ bot.dialog('/track_uber', [
     function(session, args, next){
         uber_api.track(session, next, "accepted", function(session, next, final){
 	        session.send("Please wait. We are finding your uber");
-        	console.log("FINAL");
-        	console.log(final);
         	uber_api.track(session, next, "arriving", function(session, next, final1){
-        		console.log("FINAL1");
-        		console.log(final1);
 	        	session.send("Booked!. Your Uber is arriving");
 	            if(final1.driver.name == null){
 	            	final1.driver.name = "Ashish"
@@ -375,7 +386,6 @@ bot.dialog('/train', [
     function (session,args) {  
       builder.Prompts.choice(session, "Choose one of the following services:", "PNR_Status|Train_Running_Status");
     },function (session, results, next){
-      console.log(results.response.index);
       if (results.response.index == 0){
         session.beginDialog('/pnr');
       } else{
