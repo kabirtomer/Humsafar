@@ -11,12 +11,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Prerequisites
 
-Humsafar requires:
+Humsafar has the following dependencies:
 
 - cheerio>=1.0.0-rc.2
-
-Humsafar also has the following dependencies:
-
+- restify>=7.3.0
 - body-parser>=1.18.3
 - botbuilder>=3.13.1
 - botbuilder-azure>=4.2.0
