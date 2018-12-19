@@ -40,6 +40,14 @@ Humsafar also has the following dependencies:
 
 ## Installing
 
+The first thing to do is to get the relevant API keys :-
+
+- Google Place API - Follow the instructions given in [this website](https://developers.google.com/places/web-service/intro) and get the API token for Google Place.
+- Bing Static API - Follow the intructions given on [this website](https://docs.microsoft.com/en-us/bingmaps/rest-services/imagery/get-a-static-map) and get the API for Bing Maps.
+- Uber Ride Requests API - Follow the instructions [here](https://developer.uber.com/docs/riders/ride-requests/tutorials/api/introduction) and get the API Access token for riders.
+
+Write these API tokens into the file src/config.js.example and rename the file to src/config.js.
+
 Hamsafar runs on Node.js, which must be installed from its PPA -
 
     cd ~
@@ -73,7 +81,7 @@ Then, run the following in the cloned Hamsafar directory:
 
 Deployment is uncomplicated, in the install directory simply run:
 
-    npm start
+    node app.js
 
 ## Authors
 

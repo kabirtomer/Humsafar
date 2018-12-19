@@ -1,0 +1,15 @@
+var token = "Bearer <UBER TOKEN>";
+var maps = "<GOOGLE MAPS TOKEN>";
+
+function get_token(){
+	return token;
+}
+
+function get_map_key(){
+	return maps;
+}
+
+module.exports = {
+    get_token: get_token,
+    get_map_key: get_map_key
+};
