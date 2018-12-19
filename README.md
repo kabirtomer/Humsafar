@@ -14,22 +14,13 @@ These instructions will get you a copy of the project up and running on your loc
 Humsafar requires:
 
 - cheerio>=1.0.0-rc.2
-- request>=2.88.0
 
 Humsafar also has the following dependencies:
 
 - body-parser>=1.18.3
-- ajax-request>=1.2.3
-- botbuilder>=3.12.0
-- botbuilder-azure>=3.0.4
-- botbuilder-cognitiveservices>=1.1.0
-- fast-csv>=2.4.1
-- fb>=2.0.0
-- form-data>=2.3.3
-- fs-extra>=4.0.2
-- natural>=0.6.1
-- nodemon>=1.18.4
-- restify>=6.3.4
+- botbuilder>=3.13.1
+- botbuilder-azure>=4.2.0
+- botbuilder-cognitiveservices>=1.2.0
 
 ## Built With
 
@@ -82,6 +73,10 @@ Then, run the following in the cloned Hamsafar directory:
 Deployment is uncomplicated, in the install directory simply run:
 
     node app.js
+
+## Usage
+
+This bot can be deployed on multiple platforms on the internet. To test locally download version 3.x of the Microsoft Bot Emulator. Run the bot using deployment command. Connect the emulator to http://localhost:3978/api/message and enjoy chatting to your bot.
 
 ## Authors
 
