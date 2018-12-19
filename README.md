@@ -1,6 +1,8 @@
-# Transport-Bot [![node:v11.5.0](https://img.shields.io/badge/node-v11.5.0-brightgreen.svg)](http://nodejs.org/download/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![](https://img.shields.io/badge/version-0.0.2-lightgrey.svg)
 
-Transport-Bot is a lightweight, easy to use bot that serves as a one-stop solution to all your transport needs. It uses a simple conversational interface to guide users through cab bookings, train updates, location data, PNR status, and much more.
+
+# Humsafar [![node:v11.5.0](https://img.shields.io/badge/node-v11.5.0-brightgreen.svg)](http://nodejs.org/download/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![](https://img.shields.io/badge/version-0.0.2-lightgrey.svg)
+
+Humsafar is a lightweight, easy to use bot that serves as a one-stop solution to all your transport needs. It uses a simple conversational interface to guide users through cab bookings, train updates, location data, PNR status, and much more.
 
 ## Getting Started
 
@@ -8,12 +10,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Transport-Bot requires:
+Humsafar requires:
 
 - cheerio>=1.0.0-rc.2
 - request>=2.88.0
 
-Transport-Bot also has the following dependencies:
+Humsafar also has the following dependencies:
 
 - body-parser>=1.18.3
 - ajax-request>=1.2.3
